@@ -1,4 +1,4 @@
-package com.guilin.zookeeper;
+package com.guilin.zookeeper.demo;
 
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
