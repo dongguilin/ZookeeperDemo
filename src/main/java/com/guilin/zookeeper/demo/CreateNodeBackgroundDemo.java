@@ -62,6 +62,8 @@ public class CreateNodeBackgroundDemo {
         semaphore.await();
         pool.shutdown();
 
+        client.close();
+
     }
 
 }
