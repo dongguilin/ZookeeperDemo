@@ -21,7 +21,7 @@ public class PathChildrenCacheDemo {
     private static String path = "/zk-book";
 
     private static CuratorFramework client = CuratorFrameworkFactory.builder()
-            .connectString("aleiyeb:12181")
+            .connectString("localhost:2181")
             .sessionTimeoutMs(5000)
             .connectionTimeoutMs(3000)
             .retryPolicy(new ExponentialBackoffRetry(1000, 3))
@@ -51,6 +51,7 @@ public class PathChildrenCacheDemo {
                 }
             }
         });
+
         if (client.checkExists().forPath(path) == null) {
             client.create().withMode(CreateMode.PERSISTENT).forPath(path);
             Thread.sleep(1000);

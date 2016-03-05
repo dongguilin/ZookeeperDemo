@@ -16,7 +16,7 @@ public class RecipesMasterSelectDemo {
     private static String masterPath = "/curator_recipes_master_path";
 
     private static CuratorFramework client = CuratorFrameworkFactory.builder()
-            .connectString("aleiyeb:12181")
+            .connectString("localhost:2181")
             .retryPolicy(new ExponentialBackoffRetry(1000, 3))
             .build();
 

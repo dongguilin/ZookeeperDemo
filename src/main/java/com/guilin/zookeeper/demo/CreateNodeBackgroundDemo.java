@@ -8,6 +8,8 @@ import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.apache.zookeeper.CreateMode;
 import org.junit.Test;
 
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -21,7 +23,7 @@ public class CreateNodeBackgroundDemo {
     private static String path = "/zk-book";
 
     private static CuratorFramework client = CuratorFrameworkFactory.builder()
-            .connectString("aleiyeb:12181")
+            .connectString("localhost:2181")
             .sessionTimeoutMs(5000)
             .retryPolicy(new ExponentialBackoffRetry(1000, 3))
             .build();
@@ -41,6 +43,7 @@ public class CreateNodeBackgroundDemo {
                 .inBackground(new BackgroundCallback() {
                     @Override
                     public void processResult(CuratorFramework curatorFramework, CuratorEvent curatorEvent) throws Exception {
+                        System.out.println(DateFormat.getDateTimeInstance().format(new Date()));
                         System.out.println("event[code:" + curatorEvent.getResultCode() + ", type:" + curatorEvent.getType() + "]");
                         System.out.println("Thread of processResult:" + Thread.currentThread().getName());
                         semaphore.countDown();
@@ -53,6 +56,7 @@ public class CreateNodeBackgroundDemo {
                 .inBackground(new BackgroundCallback() {
                     @Override
                     public void processResult(CuratorFramework curatorFramework, CuratorEvent curatorEvent) throws Exception {
+                        System.out.println(DateFormat.getDateTimeInstance().format(new Date()));
                         System.out.println("event[code:" + curatorEvent.getResultCode() + ", type:" + curatorEvent.getType() + "]");
                         System.out.println("Thread of processResult:" + Thread.currentThread().getName());
                         semaphore.countDown();
