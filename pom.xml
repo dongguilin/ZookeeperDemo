@@ -23,6 +23,11 @@
             <artifactId>curator-recipes</artifactId>
             <version>${curator}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-test</artifactId>
+            <version>${curator}</version>
+        </dependency>
 
         <dependency>
             <groupId>junit</groupId>
