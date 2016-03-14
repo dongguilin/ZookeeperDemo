@@ -8,10 +8,11 @@ import org.apache.curator.retry.ExponentialBackoffRetry;
 /**
  * Created by hadoop on 2016/1/11.
  * 使用Curator的DistributedDoubleBarrier实现一个分布式Barrier，并控制其同时进入和退出
+ * 线程自发触发Barrier释放的模式
  */
 public class RecipesDistributedDoubleBarrierDemo {
 
-    private static String barrierPath = "/curator_recipes_barrier_path";
+    private static String barrierPath = "/test/curator_recipes_barrier_path";
 
     public static void main(String[] args) {
         for (int i = 0; i < 5; i++) {
@@ -19,7 +20,7 @@ public class RecipesDistributedDoubleBarrierDemo {
                 @Override
                 public void run() {
                     CuratorFramework client = CuratorFrameworkFactory.builder()
-                            .connectString("aleiyeb:12181")
+                            .connectString("localhost:2181")
                             .retryPolicy(new ExponentialBackoffRetry(1000, 3))
                             .build();
                     client.start();
@@ -38,6 +39,10 @@ public class RecipesDistributedDoubleBarrierDemo {
                         e.printStackTrace();
                     } catch (Exception e) {
                         e.printStackTrace();
+                    } finally {
+                        if (client != null) {
+                            client.close();
+                        }
                     }
                 }
             }).start();
