@@ -1,4 +1,4 @@
-package com.guilin.zookeeper.demo;
+package com.guilin.zookeeper.curator.demo;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

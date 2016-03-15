@@ -1,4 +1,4 @@
-package com.guilin.zookeeper.demo;
+package com.guilin.zookeeper.curator.demo;
 
 import org.apache.curator.test.TestingCluster;
 import org.apache.curator.test.TestingZooKeeperServer;

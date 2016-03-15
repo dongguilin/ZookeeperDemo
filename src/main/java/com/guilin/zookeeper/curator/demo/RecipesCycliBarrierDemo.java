@@ -1,4 +1,4 @@
-package com.guilin.zookeeper.demo;
+package com.guilin.zookeeper.curator.demo;
 
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;

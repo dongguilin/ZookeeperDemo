@@ -1,4 +1,4 @@
-package com.guilin.zookeeper.demo;
+package com.guilin.zookeeper.curator.demo;
 
 import org.apache.curator.RetryPolicy;
 import org.apache.curator.framework.CuratorFramework;
