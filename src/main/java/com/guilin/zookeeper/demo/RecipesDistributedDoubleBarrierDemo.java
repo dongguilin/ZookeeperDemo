@@ -21,6 +21,7 @@ public class RecipesDistributedDoubleBarrierDemo {
                 public void run() {
                     CuratorFramework client = CuratorFrameworkFactory.builder()
                             .connectString("localhost:2181")
+                            .connectionTimeoutMs(1000 * 30)
                             .retryPolicy(new ExponentialBackoffRetry(1000, 3))
                             .build();
                     client.start();
