@@ -36,6 +36,7 @@ public class PathChildrenCacheDemo {
         cache.getListenable().addListener(new PathChildrenCacheListener() {
             @Override
             public void childEvent(CuratorFramework curatorFramework, PathChildrenCacheEvent event) throws Exception {
+                System.out.println(event.getType());
                 switch (event.getType()) {
                     case CHILD_ADDED:
                         System.out.println("child added," + event.getData().getPath());
@@ -45,6 +46,9 @@ public class PathChildrenCacheDemo {
                         break;
                     case CHILD_REMOVED:
                         System.out.println("child removed," + event.getData().getPath());
+                        break;
+                    case INITIALIZED:
+                        System.out.println("INITIALIZED invoked");
                         break;
                     default:
                         break;
